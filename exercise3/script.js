@@ -12,7 +12,7 @@ function useRequest(url, callback) {
           } else {
             const resultParse = JSON.parse(xhr.response);
             if (callback) {
-              callback(result);
+              callback(resultParse);
             }
           }
     }
@@ -26,11 +26,11 @@ function useRequest(url, callback) {
 
 function displayResult(apiData) {
     let cards = '';
-    
+    console.log(apiData)
     apiData.forEach(item => {
         const cardBlock = `
     <img
-        src="${item.download_url}"
+        src="${item.download_url}">
     `;
     cards += cardBlock
     });
@@ -41,7 +41,7 @@ function displayResult(apiData) {
 button.addEventListener('click', () => {
     const value = +document.querySelector('input').value;
     if (value >= 1 && value <= 10) {
-        useRequest('https://picsum.photos/v2/list?limit=${value}', displayResult)
+        useRequest(`https://picsum.photos/v2/list?limit=${value}`, displayResult)
     } else {
         result.innerHTML += `<p>
                                 число вне диапазона от 1 до 10
