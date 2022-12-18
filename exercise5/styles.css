@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+    .div-div-inner{
+        display: flex;
+    }
+    .div-inner{
+        display: flex;
+        flex-direction: column;
+    }
+    .margin{
+        margin-left: 10px;
+    }
+    .result{
+        display: flex;
+        flex-direction: column;
+    }
