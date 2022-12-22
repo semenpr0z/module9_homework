@@ -1,10 +1,10 @@
 const button = document.querySelector('button');
 const resultNode = document.querySelector('.result')
 
-//const localData = localCashe.getItem('data');
-//if (localData) {
-//    loadImage(JSON.parse(localData))
-//}
+const localData = localStorage.getItem('data');
+if (localData) {
+    loadImage(JSON.parse(localData))
+}
 
 button.addEventListener('click', async () => {
     const page = +document.querySelector('.input1').value;
@@ -20,6 +20,7 @@ button.addEventListener('click', async () => {
             })
             .then((data) => {
                 console.log(data);
+                localStorage.setItem('data', JSON.stringify(data));
                 loadImage(data);
                 return data;
             })
@@ -49,9 +50,8 @@ function loadImage(data) {
         img.setAttribute('src', item.download_url);
         img.setAttribute('width', '400');
         resultNode.append(img);
-       // const localCashe = localStorage.setItem('data', JSON.stringify(data));
     }
 }
 
 
-//не понимаю в чем ошибка с localStorage. Прошу Вас объясните, что я сделал не так и я потом переделаю это задание.(Весь код, который я написал для этой функции я закоментил)
+//ошибку с localStorage исправил
